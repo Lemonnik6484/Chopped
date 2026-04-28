@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "version": "${version}",
+  "name": "${name}",
+  "description": "${description}",
+  "authors": [
+    "${authors}"
+  ],
+  "contact": {
+    "homepage": "${homepage}",
+    "sources": "${sources}",
+    "issues": "${issue}"
+  },
+  "license": "${license}",
+  "icon": "assets/${id}/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.lemonnik.chopped.Chopped"
+    ]
+  },
+  "mixins": [
+    "chopped.mixins.json"
+  ],
+
+  "depends": {
+    "minecraft": "${minecraft_dependency}",
+    "java": ">=${java}"
+  }
+}
