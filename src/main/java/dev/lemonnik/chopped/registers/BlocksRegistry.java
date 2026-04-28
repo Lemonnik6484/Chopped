@@ -8,11 +8,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class BlocksRegistry {
-	private static final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of();
-
 	public static Block register(Block block, String name) {
 		return register(block, name, true);
 	}
