@@ -138,11 +138,10 @@ dependencies {
         }
         if (mcVersion >= 12005) {
             if (mcVersion < 260100) {
-                modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+                modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
             } else {
-                runtimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+                implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
             }
-
         }
     }
     if (project.platform == 'forge') {

@@ -4,9 +4,11 @@
   "package": "dev.lemonnik.chopped.mixin",
   "compatibilityLevel": "${java_compatibility_level}",
   "mixins": [
-
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "client": [
+    "KeyMappingAccessor"
+  ]
 }
