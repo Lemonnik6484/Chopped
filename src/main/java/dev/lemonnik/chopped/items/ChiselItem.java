@@ -1,15 +1,17 @@
 package dev.lemonnik.chopped.items;
 
-import dev.lemonnik.chopped.blocks.ChoppedBlock;
 import dev.lemonnik.chopped.client.gui.ChiselScreen;
+import dev.lemonnik.chopped.registers.TagsRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class ChiselItem extends Item {
     public ChiselItem() {
@@ -20,11 +22,13 @@ public class ChiselItem extends Item {
     public @NotNull InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
-        BlockState state = level.getBlockState(pos);
+        Block clickedBlock = level.getBlockState(pos).getBlock();
 
-        if (state.getBlock() instanceof ChoppedBlock choppedBlock) {
+        List<Block> variants = TagsRegistry.listFromBlock(clickedBlock);
+
+        if (variants != null && !variants.isEmpty()) {
             if (level.isClientSide) {
-                Minecraft.getInstance().setScreen(new ChiselScreen(pos, choppedBlock.getVariants()));
+                Minecraft.getInstance().setScreen(new ChiselScreen(pos, variants));
             }
             return InteractionResult.SUCCESS;
         }

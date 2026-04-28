@@ -1,10 +1,13 @@
 package dev.lemonnik.chopped.network;
 
+import dev.lemonnik.chopped.registers.TagsRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.List;
 
 //? if fabric {
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
@@ -46,10 +49,16 @@ public class NetworkHandler {
     }
 
     private static void handle(ChiselPayload payload, ServerPlayer player) {
-        Block block = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(payload.blockId()));
-        if (block != null) {
-            BlockState state = block.defaultBlockState();
-            player.level().setBlockAndUpdate(payload.pos(), state);
+        Block targetBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(payload.blockId()));
+
+        BlockState currentState = player.level().getBlockState(payload.pos());
+        Block currentBlock = currentState.getBlock();
+
+        List<Block> variants = TagsRegistry.listFromBlock(currentBlock);
+
+        if (variants != null && variants.contains(targetBlock)) {
+            BlockState newState = targetBlock.defaultBlockState();
+            player.level().setBlockAndUpdate(payload.pos(), newState);
         }
     }
 }
