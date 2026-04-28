@@ -29,6 +29,7 @@ public class BlocksRegistry {
 	}
 
 	public static Block TEST_PLANKS = register(new PlankBlock(), "test_planks");
+	public static Block SUPER_TEST_PLANKS = register(new PlankBlock(), "super_test_planks");
 
 	public static void initialize() {
 		Chopped.LOGGER.info("Registering Chopped blocks...");

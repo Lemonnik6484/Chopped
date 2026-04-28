@@ -55,9 +55,9 @@ if (use_architectury_loom) {
     }
 }
 
-String MOD_ICON_PATH = 'assets/tt20/icon.png'
-List<String> MIXIN_CONFIG_PATHS = ['tt20.mixins.json']
-String LANG_DIR = 'assets/tt20/lang'
+String MOD_ICON_PATH = 'assets/chopped/icon.png'
+List<String> MIXIN_CONFIG_PATHS = ['chopped.mixins.json']
+String LANG_DIR = 'assets/chopped/lang'
 JavaVersion JAVA_COMPATIBILITY
 JavaVersion MIXIN_COMPATIBILITY
 int javaVersion
@@ -138,9 +138,9 @@ dependencies {
         }
         if (mcVersion >= 12005) {
             if (mcVersion < 260100) {
-                runtimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-            } else {
                 modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+            } else {
+                runtimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
             }
 
         }
