@@ -1,12 +1,15 @@
 package dev.lemonnik.chopped.blocks;
 
+import dev.lemonnik.chopped.registers.BlocksRegistry;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 
-public class PlankBlock extends Block {
+import java.util.List;
+
+public class PlankBlock extends Block implements ChoppedBlock {
     public PlankBlock() {
         super(BlockBehaviour.Properties.of()
                 .mapColor(MapColor.WOOD)
@@ -14,6 +17,14 @@ public class PlankBlock extends Block {
                 .strength(2.0F, 3.0F)
                 .sound(SoundType.WOOD)
                 .ignitedByLava()
+        );
+    }
+
+    @Override
+    public List<Block> getVariants() {
+        return List.of(
+                BlocksRegistry.TEST_PLANKS,
+                BlocksRegistry.SUPER_TEST_PLANKS
         );
     }
 }

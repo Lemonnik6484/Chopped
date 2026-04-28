@@ -1,6 +1,7 @@
 package dev.lemonnik.chopped;
 
 import dev.lemonnik.chopped.registers.BlocksRegistry;
+import dev.lemonnik.chopped.registers.ItemsRegistry;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
@@ -37,6 +38,7 @@ public class Chopped
 		LOGGER.info("Starting Chopped...");
 
 		BlocksRegistry.initialize();
+		ItemsRegistry.initialize();
 	}
 
 	public static ResourceLocation id(String path) {
